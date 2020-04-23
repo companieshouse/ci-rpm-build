@@ -19,6 +19,8 @@ In addition to installing distribution-managed packages in the resulting contain
 └ ...
 ```
 
-## Building binary RPM packages
+## Building RPM packages
 
-Any RPM spec file(s) should be copied to `/root/rpmbuild/SPECS` within the relevant `Makefile` target for any project that uses this container, in addition to copying associated source tarballs required to build the RPM (i.e. those files defined by `SourceN` fields in the RPM spec file, where `N` is a number) to `/root/rpmbuild/SOURCES`. Note that all source tarballs are expected to contain a parent directory whose name follows the pattern `<rpm-name>-<version`. Generated binary and source RPMs will be output to `/root/rpmbuild/RPMS` and `/root/rpmbuild/SRPMS` respectively.
+Any RPM spec file(s) should be copied to `/root/rpmbuild/SPECS` by the relevant `Makefile` target for any project that uses this container. In addition, any source tarballs required to build the RPM (i.e. those files defined by `SourceN` fields in the RPM spec file, where `N` is a number) should be copied to `/root/rpmbuild/SOURCES`. Note that all source tarballs are expected to contain a parent directory whose name follows the pattern `<rpm-name>-<version>`.
+
+The standard `rpm*` set of commands can be used to build packages. Generated binary and source RPMs will be output to `/root/rpmbuild/RPMS` and `/root/rpmbuild/SRPMS` respectively.
